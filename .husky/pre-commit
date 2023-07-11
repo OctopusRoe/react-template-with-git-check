@@ -1,0 +1,11 @@
+###
+ # @Author: OctopusRoe
+ # @Date: 2023-07-10 16:57:49
+ # @LastEditors: OctopusRoe
+ # @LastEditTime: 2023-07-10 16:58:07
+ # @Description: 
+### 
+#!/usr/bin/env sh
+# . "$(dirname -- "$0")/_/husky.sh"
+
+npm run lint
