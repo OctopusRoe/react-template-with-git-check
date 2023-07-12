@@ -2,7 +2,7 @@
  * @Author: OctopusRoe
  * @Date: 2023-07-10 17:04:52
  * @LastEditors: OctopusRoe
- * @LastEditTime: 2023-07-10 18:36:08
+ * @LastEditTime: 2023-07-12 14:47:41
  * @Description:
  */
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
         'test'
       ]
     ],
-    'subject-full-stop': [0, 'never'],
-    'subject-case': [0, 'never']
+    'subject-full-stop': [0, 'always'],
+    'subject-case': [0, 'always']
   }
 };
