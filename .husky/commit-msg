@@ -1,10 +1,4 @@
-###
- # @Author: OctopusRoe
- # @Date: 2023-07-10 17:11:32
- # @LastEditors: OctopusRoe
- # @LastEditTime: 2023-07-10 17:12:08
- # @Description: 
-### 
+
 #!/usr/bin/env sh
 
 npx --no -- commitlint --edit ${1}
