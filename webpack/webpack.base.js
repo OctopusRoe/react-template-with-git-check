@@ -2,7 +2,7 @@
  * @Author: OctopusRoe
  * @Date: 2023-07-10 09:58:20
  * @LastEditors: OctopusRoe
- * @LastEditTime: 2023-08-05 21:56:24
+ * @LastEditTime: 2023-08-08 18:19:55
  * @Description:
  */
 const path = require('path');
@@ -11,13 +11,36 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
+const cssLoader = () => {
+  return {
+    loader: 'css-loader',
+    options: {
+      sourceMap: true,
+      modules: {
+        localIdentName: '[local]-[hash:base64:5]',
+        getLocalIdent: (
+          context,
+          localIdentName,
+          localName,
+          options
+        ) => {
+          return localName.includes('ant')
+            ? localName
+            : null;
+        }
+      }
+    }
+  };
+};
+
 module.exports = {
   entry: path.join(__dirname, '../src/index.tsx'),
   output: {
     filename: 'js/[name].[chunkhash:8].js',
     path: path.join(__dirname, '../dist'),
     clean: true,
-    publicPath: '/'
+    publicPath:
+      process.env.NODE_ENV === 'development' ? '/' : './'
   },
   cache: {
     type: 'filesystem' // 使用文件缓存
@@ -36,7 +59,7 @@ module.exports = {
           isDev
             ? 'style-loader'
             : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
-          'css-loader',
+          cssLoader(),
           'postcss-loader'
         ]
       },
@@ -47,7 +70,7 @@ module.exports = {
           isDev
             ? 'style-loader'
             : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
-          'css-loader',
+          cssLoader(),
           'postcss-loader',
           'less-loader'
         ]
@@ -59,7 +82,7 @@ module.exports = {
           isDev
             ? 'style-loader'
             : MiniCssExtractPlugin.loader, // 开发环境使用style-looader,打包模式抽离css
-          'css-loader',
+          cssLoader(),
           'postcss-loader',
           {
             loader: 'sass-loader',
@@ -84,7 +107,8 @@ module.exports = {
           }
         },
         generator: {
-          filename: 'images/[name].[contenthash:8][ext]'
+          filename: 'images/[name].[contenthash:8][ext]',
+          publicPath: './'
         }
       },
       {
@@ -96,7 +120,8 @@ module.exports = {
           }
         },
         generator: {
-          filename: 'fonts/[name].[contenthash:8][ext]'
+          filename: 'fonts/[name].[contenthash:8][ext]',
+          publicPath: './'
         }
       },
       {
@@ -108,7 +133,8 @@ module.exports = {
           }
         },
         generator: {
-          filename: 'media/[name].[contenthash:8][ext]'
+          filename: 'media/[name].[contenthash:8][ext]',
+          publicPath: './'
         }
       }
     ]
