@@ -2,7 +2,7 @@
  * @Author: OctopusRoe
  * @Date: 2023-07-10 09:58:20
  * @LastEditors: OctopusRoe
- * @LastEditTime: 2023-08-08 18:19:55
+ * @LastEditTime: 2023-08-08 18:38:21
  * @Description:
  */
 const path = require('path');
@@ -76,7 +76,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.sass$/,
+        test: /\.(sass|scss)$/,
         include: [path.resolve(__dirname, '../src')],
         use: [
           isDev
