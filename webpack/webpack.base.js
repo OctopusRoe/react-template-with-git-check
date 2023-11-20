@@ -2,7 +2,7 @@
  * @Author: OctopusRoe
  * @Date: 2023-07-10 09:58:20
  * @LastEditors: OctopusRoe
- * @LastEditTime: 2023-08-12 16:22:13
+ * @LastEditTime: 2023-11-20 15:11:18
  * @Description:
  */
 const path = require('path');
@@ -87,7 +87,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              additionalData: ''
+              additionalData: '' // 需要全插入scss文件的内容
             }
           }
         ]
